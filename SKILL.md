@@ -1,11 +1,11 @@
 ---
 name: deepseek-harness-plugin-dev
-description: Develop, modify, review, or plan plugins for the DeepSeek Harness repository. Use when working in deepseek-harness on Cordis plugins, model-facing tools, Service Definition/Provider/Consumer capability seams, LLM adapters, hook/policy plugins, UI/protocol drivers, package scaffolding, plugin tests, README Model Experience sections, Agent Notes, or related dsh package conventions.
+description: Rapidly develop, scaffold, modify, review, or plan plugins for the DeepSeek Harness repository. Use when working in deepseek-harness on Cordis plugins, model-facing tools, Service Definition/Provider/Consumer capability seams, LLM adapters, hook/policy plugins, UI/protocol drivers, package scaffolding, plugin tests, README Model Experience sections, Agent Notes, or related dsh package conventions.
 ---
 
 # DeepSeek Harness Plugin Development
 
-Use this skill to keep DeepSeek Harness plugin work aligned with the repository's Cordis architecture, package conventions, documentation requirements, and verification policy.
+Use this skill to ship a small, correct DeepSeek Harness plugin change quickly while staying aligned with the repository's Cordis architecture, package conventions, documentation requirements, and verification policy.
 
 ## Required Orientation
 
@@ -21,7 +21,26 @@ Before changing code under `packages/`, read the active repository sources, not 
 - For docs/prose changes: use `dsh-prose-standard`
 - Before push or ready-for-review: use `dsh-pre-push-checks`
 
-Read `references/plugin-standards.md` when you need the compact checklist or when the task touches implementation, tests, or docs.
+Read `references/playbooks.md` when the user wants a plugin implemented or scaffolded quickly.
+Read `references/templates.md` when writing new package, plugin, README, invariant, or test skeletons.
+Read `references/plugin-standards.md` when you need the compact rules checklist or when reviewing a plugin change.
+
+## Fast Build Loop
+
+1. Classify the request into one plugin type: model tool, hook/policy, context injector, Service Definition, Service Provider, Consumer, LLM adapter, UI/protocol driver, settings card, or bundle/profile wiring.
+2. Load only the matching playbook and template references.
+3. Inspect the closest existing package in the same role.
+4. Produce the smallest working slice: package skeleton, registration, core behavior, README/JSDoc, invariant companion, and focused test plan.
+5. Run the smallest checks that prove the slice.
+
+For a new simple function plugin package, optionally use:
+
+```bash
+~/.codex/skills/deepseek-harness-plugin-dev/scripts/create-function-plugin.sh \
+  /path/to/deepseek-harness <group> <pkg> [inject_csv]
+```
+
+The script creates starter files only. The agent must still inspect the live repository, add aggregate tsconfig references, add dependencies for injected services, and write behavior-specific tests.
 
 ## Workflow
 
