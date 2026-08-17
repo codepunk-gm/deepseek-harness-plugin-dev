@@ -1,0 +1,4 @@
+interface:
+  display_name: "DeepSeek Harness Plugin Dev"
+  short_description: "DeepSeek Harness 插件开发工作流指南"
+  default_prompt: "Use $deepseek-harness-plugin-dev to plan and implement a DeepSeek Harness plugin change."
